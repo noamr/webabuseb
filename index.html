@@ -10,7 +10,7 @@
             });
             await device.open();
             const output = document.getElementById('output');
-            output.innerText = `You have a ${device.productName}. Serial number: ${Number(device.serialNumber).toString(16)}. Thanks, now we know.`)
+            output.innerText = `You have a ${device.productName}. Serial number: ${device.serialNumber}. Thanks, now we know.`)
         } catch (e) {
             console.log("Not sure if the user has an external drive")
         } finally {
