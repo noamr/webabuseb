@@ -1,0 +1,17 @@
+<h1>Welcome to file saver!</h1>
+<button id="saveButton">Choose a drive to save your file</button>
+<script>
+    const saveButton = document.getElementById('saveButton');
+    saveButton.addEventListener('click', async () => {
+        try {
+            const device = await navigator.usb.requestDevice({
+                filters: [{ vendorId: 0xbc2 }, {vendorId: 0x1058}, {vendorId: 0x144f}, {vendorId: 0x04e8}]
+            });
+            await device.open();
+            console.log(`This user has ${device.productName}. Serial number: ${Number(device.serialNumber).toString(16)}.`)
+        } catch (e) {
+            console.log("Not sure if the user has an external drive")
+        } finally {
+        }
+    })
+</script>
